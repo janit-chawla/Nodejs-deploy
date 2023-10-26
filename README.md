@@ -2,6 +2,6 @@
 
 # ENV
 
-- PORT = <application port>
+- PORT = application_port
 
-- MSG = <any msg which will print on web page> 
+- MSG = "any msg which will print on web page"

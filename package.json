@@ -1,0 +1,21 @@
+{
+  "name": "sample-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "build": "echo 'No build steps required'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.neuralcompany.team/xs004-parbha/sample-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node": "^21.1.0"
+  }
+}

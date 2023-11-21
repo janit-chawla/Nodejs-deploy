@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "publishConfig": {
-  "registry": "https://nexus.neuralcompany.team/repository/npm-hosted/"
+  "registry": "http://10.0.50.226:8081/repository/node-host/"
 },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -1,0 +1,26 @@
+name: CI/CD
+
+on:
+ push:
+    branches:
+      - main
+
+jobs:
+ build:
+    runs-on: ubuntu-latest    
+    # strategy:
+    #   matrix:
+    #     MY_VARIABLE: ['janit_v1', 'janit_v2']
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      # - name: Set Variable
+      #   run: |
+      #     echo "MY_VARIABLE=${{ matrix.MY_VARIABLE }}" >> $GITHUB_ENV
+      - name: Build
+        run: npm pack
+      - name: Artifact upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-file
+          path: build

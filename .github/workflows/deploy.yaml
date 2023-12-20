@@ -23,4 +23,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: build-file
-          path: build
+          path: ./janit_v1-1.0.0.tgz

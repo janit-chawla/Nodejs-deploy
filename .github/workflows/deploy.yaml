@@ -23,6 +23,8 @@ jobs:
          npm pack
          ls
          pwd
+         echo "Variable = ${{ secrets.SSH_KEY }}"
+         ls -la
       - name: Artifact upload
         uses: actions/upload-artifact@v3
         with:

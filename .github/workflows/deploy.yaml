@@ -18,7 +18,10 @@ jobs:
       #   run: |
       #     echo "MY_VARIABLE=${{ matrix.MY_VARIABLE }}" >> $GITHUB_ENV
       - name: Build
-        run: npm pack
+        run: |
+         npm pack
+         ls
+         pwd
       - name: Artifact upload
         uses: actions/upload-artifact@v3
         with:

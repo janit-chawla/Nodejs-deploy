@@ -16,22 +16,24 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+      - name: Checkout ansible
+        uses: actions/checkout@v4
+        with:
+          ref: ansible
       - name: Build
         run: |
          npm pack
          ls
          pwd
-         echo "Variable = ${{ secrets.SSH_KEY }}"
          ls -la
-      - name: Artifact upload
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-file
-          path: .
-      - name: Checkout ansible
-        uses: actions/checkout@v4
-        with:
-          ref: ansible
+      # - name: Artifact upload
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: build-file
+      #     path: .
+      # - name: Download .tgz file
+      #   uses: actions/download-artifact@v3
+      #   with: build-file
       - name: List
         run: |
           ls -la
@@ -42,6 +44,7 @@ jobs:
       - name: Change permission
         run: |
           chmod 600 jan.pem 
-          ls -la   
-      - name: Run playbook
-        run: ansible-playbook -i hosts playbook.yaml --private-key /home/runner/work/Nodejs-deploy/Nodejs-deploy/jan.pem
+          ls -la
+          ls | grep .tgz
+      # - name: Run playbook
+      #   run: ansible-playbook -i hosts playbook.yaml --private-key /home/runner/work/Nodejs-deploy/Nodejs-deploy/jan.pem

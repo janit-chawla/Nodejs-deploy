@@ -36,8 +36,8 @@ jobs:
           ls
           ls -la
       - name: Decrypt Pem
-        run: gpg --quiet --batch --yes --decrypt --passphrase="$SSH_KEY" --output $HOME/secrets/jan.pem jan.pem.gpg
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$SSH_KEY" --output /home/runner/work/Nodejs-deploy/Nodejs-deploy/jan.pem jan.pem.gpg
         env:
           SSH_KEY: ${{ secrets.SSH_KEY}}      
       - name: Run playbook
-        run: ansible-playbook -i hosts playbook.yaml --private-key $HOME/secrets/jan.pem
+        run: ansible-playbook -i hosts playbook.yaml --private-key /home/runner/work/Nodejs-deploy/Nodejs-deploy/jan.pem

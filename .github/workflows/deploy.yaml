@@ -1,7 +1,8 @@
 name: CI/CD
 
 on:
- push:
+  workflow_dispatch:
+  push:
     branches:
       - main
 
@@ -33,7 +34,6 @@ jobs:
           ref: ansible
       - name: List
         run: |
-          ls
           ls -la
       - name: Decrypt Pem
         run: gpg --quiet --batch --yes --decrypt --passphrase="$SSH_KEY" --output /home/runner/work/Nodejs-deploy/Nodejs-deploy/jan.pem jan.pem.gpg

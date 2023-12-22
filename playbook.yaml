@@ -13,7 +13,7 @@
           - npm
     - name: "Extract"
       ansible.builtin.unarchive:
-        src: /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-Deploy/janit_v1-1.0.0.tgz
+        src: /home/runner/work/Nodejs-deploy/Nodejs-deploy/janit_v1-1.0.0.tgz
         dest: /home/ubuntu
     # - name: "Prep of systemd"
     #   command:

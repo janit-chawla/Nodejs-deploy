@@ -48,4 +48,4 @@ jobs:
           ls | grep .tgz
           ls
       - name: Run playbook
-        run: ansible-playbook -i /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/hosts /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/playbook.yaml --private-key /home/runner/work/Nodejs-deploy/Nodejs-deploy/jan.pem
+        run: ansible-playbook -i /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/hosts /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/playbook.yaml --private-key /home/runner/work/Nodejs-deploy/Nodejs-deploy/jan.pem -e "ansible_ssh_common_args='-o StrictHostKeyChecking=no'"

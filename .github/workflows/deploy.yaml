@@ -17,9 +17,10 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
       - name: Checkout ansible
-        uses: actions/checkout@v4
-        with:
-          ref: ansible
+        run: git clone --single-branch --branch ansible https://github.com/janit-chawla/Nodejs-deploy.git
+        # uses: actions/checkout@v4
+        # with:
+        #   ref: ansible
       - name: Build
         run: |
          npm pack
@@ -44,7 +45,7 @@ jobs:
       - name: Change permission
         run: |
           chmod 600 jan.pem 
-          ls -la
           ls | grep .tgz
+          ls
       # - name: Run playbook
       #   run: ansible-playbook -i hosts playbook.yaml --private-key /home/runner/work/Nodejs-deploy/Nodejs-deploy/jan.pem

@@ -39,7 +39,7 @@ jobs:
         run: |
           ls -la
       - name: Decrypt Pem
-        run: gpg --quiet --batch --yes --decrypt --passphrase="$SSH_KEY" --output /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/jan.pem jan.pem.gpg
+        run: gpg --quiet --batch --yes --decrypt --passphrase="$SSH_KEY" --output /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/jan.pem /Nodejs-deploy/jan.pem.gpg
         env:
           SSH_KEY: ${{ secrets.SSH_KEY}}
       - name: Change permission

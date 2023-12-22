@@ -1,0 +1,36 @@
+- hosts: myServers
+  become: True
+  become_user: root
+  tasks:
+    - name: "apt-get update"
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+    - name: "Install Node and npm"
+      apt:
+        pkg:
+          - nodejs
+          - npm
+    - name: "Extract"
+      ansible.builtin.unarchive:
+        src: /home/runner/work/Nodejs-deploy/Nodejs-deploy/janit_v1-1.0.0.tgz
+        dest: /home/ubuntu
+    - name: "Prep of systemd"
+      command:
+        cmd: chmod 777 /home/ubuntu/package/
+    - name: "Prep of systemd"
+      command:
+        cmd: systemctl start node.service
+
+- hosts: proxy
+  become: True
+  become_user: root
+  tasks:
+    - name: "copy haproxy config"
+      copy:
+        src: /home/jenkins/agent/workspace/Janit_Build/haproxy.cfg
+        dest: /etc/haproxy/
+    - name: "Start haproxy"
+      command:
+        cmd: systemctl start haproxy
+      

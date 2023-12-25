@@ -21,12 +21,12 @@ jobs:
         # uses: actions/checkout@v4
         # with:
         #   ref: ansible
-      - name: Build
-        run: |
-         npm pack
-         ls
-         pwd
-         ls -la
+      # - name: Build
+      #   run: |
+      #    npm pack
+      #    ls
+      #    pwd
+      #    ls -la
       # - name: Artifact upload
       #   uses: actions/upload-artifact@v3
       #   with:
@@ -35,18 +35,18 @@ jobs:
       # - name: Download .tgz file
       #   uses: actions/download-artifact@v3
       #   with: build-file
-      - name: List
-        run: |
-          ls -la
-      - name: Decrypt Pem
-        run: gpg --quiet --batch --yes --decrypt --passphrase="$SSH_KEY" --output /home/runner/work/Nodejs-deploy/Nodejs-deploy/jan.pem /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/jan.pem.gpg
-        env:
-          SSH_KEY: ${{ secrets.SSH_KEY}}
-      - name: Change permission
-        run: |
-          chmod 600 jan.pem 
-          ls | grep .tgz
-          ls
+      # - name: List
+      #   run: |
+      #     ls -la
+      # - name: Decrypt Pem
+      #   run: gpg --quiet --batch --yes --decrypt --passphrase="$SSH_KEY" --output /home/runner/work/Nodejs-deploy/Nodejs-deploy/jan.pem /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/jan.pem.gpg
+      #   env:
+      #     SSH_KEY: ${{ secrets.SSH_KEY}}
+      # - name: Change permission
+      #   run: |
+      #     chmod 600 jan.pem 
+      #     ls | grep .tgz
+      #     ls
       - name: npm install
         run: npm install
         env:

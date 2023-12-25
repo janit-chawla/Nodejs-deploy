@@ -1,7 +1,7 @@
 name: CI/CD
 on: workflow_dispatch
 jobs:
- build:
+  build:
     environment: testing
     runs-on: ubuntu-latest    
     steps:
@@ -11,15 +11,12 @@ jobs:
         run: git clone --single-branch --branch ansible https://github.com/janit-chawla/Nodejs-deploy.git
       - name: List
         run: ls
-        # uses: actions/checkout@v4
-        # with:
-        #   ref: ansible
       - name: Build
         run: |
-         npm pack
-         ls
-         pwd
-         ls -la
+          npm pack
+          ls
+          pwd
+          ls -la
       - name: Artifact upload
         uses: actions/upload-artifact@v3
         with:
@@ -27,7 +24,8 @@ jobs:
           path: .
       - name: Download .tgz file
         uses: actions/download-artifact@v3
-        with: build-file
+        with:
+          name: build-file
       - name: List
         run: |
           ls -la
@@ -40,22 +38,16 @@ jobs:
           chmod 600 jan.pem 
           ls | grep .tgz
           ls
-      # - name: npm install
-      #   run: npm install
-      #   env:
-      #     NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      # - name: List
-      #   run: ls
       - name: Nexus Repo Publish
-      uses: sonatype-nexus-community/nexus-repo-github-action@master
-      with:
-        serverUrl: 10.0.50.49:8081/repository/node-host/
-        username: ${{ secrets.nxrm_user }}
-        password: ${{ secrets.nxrm_password }}
-        format: npm
-        repository: node-host
-        coordinates: groupId=com.example artifactId=app version=1.0.0
-        assets: filename=gh-action-test
-        filename: ./janit_v2-1.0.0.tgz
+        uses: sonatype-nexus-community/nexus-repo-github-action@master
+        with:
+          serverUrl: 10.0.50.49:8081/repository/node-host/
+          username: ${{ secrets.nxrm_user }}
+          password: ${{ secrets.nxrm_password }}
+          format: npm
+          repository: node-host
+          coordinates: groupId=com.example artifactId=app version=1.0.0
+          assets: filename=gh-action-test
+          filename: ./janit_v2-1.0.0.tgz
       - name: Run playbook
         run: ansible-playbook -i /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/hosts /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/playbook.yaml --private-key /home/runner/work/Nodejs-deploy/Nodejs-deploy/jan.pem -e "ansible_ssh_common_args='-o StrictHostKeyChecking=no'"

@@ -36,7 +36,8 @@ jobs:
           path: .
       - name: Download .tgz file
         uses: actions/download-artifact@v3
-        with: build-file
+        with:
+          name: build-file
       - name: List
         run: |
           ls -la

@@ -3,8 +3,8 @@ var http = require('http');
 var port = process.env.PORT || 6443;
 var msg = process.env.MSG
 http.createServer(function (req, res) {
-    res.write("Hello from v1"); //write a response to the client
-    res.write(' Version: v1')
+    res.write("Hello from v2"); //write a response to the client
+    res.write(' Version: v2')
     res.end(); //end the response
 }).listen(port); //the server object listens on port 8080
 

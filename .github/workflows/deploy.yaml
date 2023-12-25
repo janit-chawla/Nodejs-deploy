@@ -2,9 +2,9 @@ name: CI/CD
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - v2
+  # push:
+  #   branches:
+  #     - v2
 
 jobs:
  build:

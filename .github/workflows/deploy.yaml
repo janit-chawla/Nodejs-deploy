@@ -22,10 +22,10 @@ jobs:
         with:
           name: build-file
           path: .
-      - name: Download .tgz file
-        uses: actions/download-artifact@v3
-        with:
-          name: build-file
+      # - name: Download .tgz file
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: build-file
       - name: List
         run: |
           ls -la
@@ -49,5 +49,7 @@ jobs:
           coordinates: groupId=com.example artifactId=app version=1.0.0
           assets: filename=gh-action-test
           filename: ./janit_v2-1.0.0.tgz
-      - name: Run playbook
-        run: ansible-playbook -i /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/hosts /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/playbook.yaml --private-key /home/runner/work/Nodejs-deploy/Nodejs-deploy/jan.pem -e "ansible_ssh_common_args='-o StrictHostKeyChecking=no'"
+      - name: List
+        run: ls
+      # - name: Run playbook
+      #   run: ansible-playbook -i /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/hosts /home/runner/work/Nodejs-deploy/Nodejs-deploy/Nodejs-deploy/playbook.yaml --private-key /home/runner/work/Nodejs-deploy/Nodejs-deploy/jan.pem -e "ansible_ssh_common_args='-o StrictHostKeyChecking=no'"

@@ -34,10 +34,10 @@ jobs:
         with:
           name: build-file
           path: .
-      - name: Download .tgz file
-        uses: actions/download-artifact@v3
-        with:
-          name: build-file
+      # - name: Download .tgz file
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: build-file
       - name: List
         run: |
           ls -la

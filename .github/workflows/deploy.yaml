@@ -18,6 +18,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Checkout ansible
         run: git clone --single-branch --branch ansible https://github.com/janit-chawla/Nodejs-deploy.git
+      - name: List
+        run: ls
         # uses: actions/checkout@v4
         # with:
         #   ref: ansible
